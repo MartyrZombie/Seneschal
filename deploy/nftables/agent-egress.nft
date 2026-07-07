@@ -1,0 +1,23 @@
+# Agent UID default-drop; allow broker socket, local models, egress proxy (plan §13)
+# Apply with: nft -f deploy/nftables/agent-egress.nft
+
+table inet seneschal {
+  chain agent_egress {
+    type filter hook output priority 0; policy accept;
+
+    # Replace 1001 with agent user UID at deploy time
+    meta skuid != 1001 return;
+
+    # default drop for agent user
+    drop;
+  }
+
+  chain agent_allow {
+    type filter hook output priority -10; policy accept;
+    meta skuid != 1001 return;
+
+    # loopback + llama.cpp + tinyproxy
+    ip daddr 127.0.0.0/8 accept
+    # unix broker socket handled outside nftables
+  }
+}

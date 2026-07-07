@@ -1,0 +1,19 @@
+[Unit]
+Description=Seneschal orchestrator inbox poller
+After=seneschal-dispatcher.service
+
+[Service]
+Type=simple
+User=agent
+Group=agent
+ExecStart=/usr/local/bin/seneschal-orchestrator --poll
+Restart=on-failure
+
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/agent
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

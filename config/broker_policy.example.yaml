@@ -1,0 +1,23 @@
+# Copy to config/broker_policy.yaml — admin-only, hot-reload via SIGHUP.
+# Invalid policy fails closed and keeps last-good.
+
+version: 1
+
+correspondent_allowlist:
+  - dave@example.com
+  - "+15555550200"
+
+actions:
+  send_text:
+    enabled: true
+    rate_limit:
+      per_hour: 10
+      per_minute_per_recipient: 2
+    recipient_allowlist:
+      - "+15555550200"
+
+  place_call:
+    enabled: false
+
+  send_email:
+    enabled: false

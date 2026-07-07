@@ -1,0 +1,7 @@
+[Unit]
+Description=Inject daily digest scheduler command
+
+[Service]
+Type=oneshot
+User=agent
+ExecStart=/usr/local/bin/python -m seneschal.scheduler.injector --task daily_digest --body "Generate daily digest"
