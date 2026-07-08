@@ -2,7 +2,7 @@
 
 Personal AI agent harness — self-hosted, Proxmox-based, security-first.
 
-Samson is the single command principal. The agent runs as an unprivileged Linux user with deterministic enforcement (ingest, dispatcher, broker, egress) and model-backed orchestration (Qwen3-30B-A3B via llama.cpp on Tesla P40).
+The agent runs as an unprivileged Linux user with deterministic enforcement (ingest, dispatcher, broker, egress) and model-backed orchestration (Qwen3-30B-A3B via llama.cpp on Tesla P40).
 
 ## Status
 
