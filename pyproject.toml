@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "seneschal"
+version = "0.1.0"
+description = "Personal AI agent harness — self-hosted orchestrator with scoped permissions"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Samson" }]
+dependencies = [
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "httpx>=0.27",
+    "uvicorn[standard]>=0.30",
+    "fastapi>=0.111",
+    "aiosqlite>=0.20",
+    "structlog>=24.2",
+    "python-multipart>=0.0.9",
+    "pyyaml>=6.0",
+    "jsonschema>=4.22",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.4",
+    "mypy>=1.10",
+]
+voice = [
+    "faster-whisper>=1.0",
+]
+memory = [
+    "qdrant-client>=1.9",
+    "psycopg[binary]>=3.1",
+]
+
+[project.scripts]
+seneschal-ingest = "seneschal.ingest.service:main"
+seneschal-broker = "seneschal.broker.server:main"
+seneschal-dispatcher = "seneschal.dispatcher.daemon:main"
+seneschal-orchestrator = "seneschal.orchestrator.core:main"
+seneschal-shim = "seneschal.channels.shim:main"
+seneschal-trace = "seneschal.trace.query:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/seneschal"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["seneschal"]

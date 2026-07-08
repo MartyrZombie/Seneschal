@@ -1,0 +1,20 @@
+[Unit]
+Description=Seneschal subtask dispatcher
+After=network.target seneschal-broker.service
+
+[Service]
+Type=simple
+User=seneschal-dispatcher
+Group=seneschal-dispatcher
+ExecStart=/usr/local/bin/seneschal-dispatcher
+Restart=on-failure
+RestartSec=5
+
+ProtectSystem=strict
+PrivateTmp=true
+NoNewPrivileges=true
+ReadWritePaths=/var/lib/seneschal /var/log/seneschal
+# OpenRouter egress only from this account (plan §13)
+
+[Install]
+WantedBy=multi-user.target

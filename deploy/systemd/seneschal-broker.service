@@ -1,0 +1,22 @@
+[Unit]
+Description=Seneschal capability broker
+After=network.target
+
+[Service]
+Type=simple
+User=seneschal-broker
+Group=seneschal-broker
+ExecStart=/usr/local/bin/seneschal-broker
+Restart=on-failure
+RestartSec=5
+
+# systemd hardening (plan §11)
+ProtectSystem=strict
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectHome=true
+ReadWritePaths=/var/lib/seneschal /run/seneschal
+# IPAddressAllow=api.twilio.com openrouter.ai  # enable when broker makes outbound calls
+
+[Install]
+WantedBy=multi-user.target

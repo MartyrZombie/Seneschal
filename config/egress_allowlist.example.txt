@@ -1,0 +1,7 @@
+# Egress domain allowlist for agent UID (plan §13)
+# One domain per line; subdomains must be listed explicitly unless noted.
+
+127.0.0.1
+localhost
+openrouter.ai
+api.twilio.com

@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Runtime / secrets
+*.db
+*.db-journal
+*.sqlite
+*.log
+data/
+.env
+.env.*
+!.env.example
+config/broker_policy.yaml
+config/ingest_allowlists.yaml
+config/api_keys.yaml
+secrets/
+
+# Agent home runtime data
+agent_home_template/scratch/*
+agent_home_template/inbox/**/*
+!agent_home_template/inbox/.gitkeep
+!agent_home_template/scratch/.gitkeep
+
+# IDE
+.idea/
+.vscode/
+*.swp

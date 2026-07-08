@@ -1,0 +1,16 @@
+[Unit]
+Description=Seneschal OpenAI-compatible desktop shim
+After=seneschal-orchestrator.service
+
+[Service]
+Type=simple
+User=seneschal-shim
+Group=seneschal-shim
+ExecStart=/usr/local/bin/seneschal-shim
+Restart=on-failure
+
+# localhost/tailnet only (plan §18)
+BindToDevice=lo
+
+[Install]
+WantedBy=multi-user.target
