@@ -27,14 +27,14 @@ def test_subtask_brief_defaults() -> None:
 
 
 def test_desktop_api_key_command() -> None:
-    allowlists = IngestAllowlists(api_keys={"secret": "samson"})
+    allowlists = IngestAllowlists(api_keys={"secret": "owner"})
     classifier = IngestClassifier(allowlists, trace=_NoopTrace())
     result = classifier.classify_desktop("secret")
     assert result.message_class == MessageClass.COMMAND
 
 
 def test_desktop_invalid_key_is_content() -> None:
-    allowlists = IngestAllowlists(api_keys={"secret": "samson"})
+    allowlists = IngestAllowlists(api_keys={"secret": "owner"})
     classifier = IngestClassifier(allowlists, trace=_NoopTrace())
     result = classifier.classify_desktop("wrong")
     assert result.message_class == MessageClass.CONTENT

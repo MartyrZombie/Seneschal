@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 AI_DISCLOSURE = (
-    "Hello. This is Samson's AI assistant. I'm an artificial intelligence, not a human. "
+    "Hello. This is an AI assistant. I'm an artificial intelligence, not a human. "
     "How can I help you today?"
 )
 
 THIRD_PARTY_DISCLOSURE = (
-    "This message is from Samson's AI assistant on his behalf."
+    "This message is from an AI assistant acting on behalf of the command principal."
 )
 
 

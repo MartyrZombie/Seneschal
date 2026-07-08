@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from uuid import uuid4
 
 import yaml
 
@@ -33,7 +34,7 @@ def load_cases() -> list[dict]:
 
 
 def run_ingest_case(case: dict) -> None:
-    allowlists = IngestAllowlists(email_senders={"samson@example.com"})
+    allowlists = IngestAllowlists(email_senders={"owner@example.com"})
     classifier = IngestClassifier(allowlists, trace=_NoopTrace())
     inp = case["input"]
     result = classifier.classify_email(
@@ -53,7 +54,7 @@ def run_redaction_case(case: dict) -> None:
 def run_budget_case(case: dict) -> None:
     dispatcher = Dispatcher()
     envelope = RequestBudgetEnvelope(max_subtasks=case["input"]["max_subtasks"])
-    request_id = "eval-budget"
+    request_id = f"eval-budget-{uuid4()}"
     for i in range(case["input"]["submit_count"]):
         brief = SubtaskBrief(
             request_id=request_id,
