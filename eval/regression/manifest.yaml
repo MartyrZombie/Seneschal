@@ -28,7 +28,7 @@ cases:
   - id: ingest_email_principal
     suite: ingest_classification
     input:
-      sender: samson@example.com
+      sender: owner@example.com
       dkim_pass: true
       spf_pass: true
       dmarc_pass: true

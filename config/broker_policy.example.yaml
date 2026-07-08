@@ -4,7 +4,7 @@
 version: 1
 
 correspondent_allowlist:
-  - dave@example.com
+  - correspondent@example.com
   - "+15555550200"
 
 actions:

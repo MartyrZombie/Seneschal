@@ -1,14 +1,14 @@
 # Copy to config/ingest_allowlists.yaml and customize.
-# Admin (Samson) is the only writer; agent user has no path here.
+# Admin is the only writer; agent user has no path here.
 
-principal_id: samson
+principal_id: owner
 
 # Desktop shim API keys map to principal_id
 api_keys:
-  dev-local-key: samson
+  dev-local-key: owner
 
 email_senders:
-  - samson@example.com
+  - owner@example.com
 
 sms_numbers:
   - "+15555550100"

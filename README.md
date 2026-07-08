@@ -2,7 +2,7 @@
 
 Personal AI agent harness — self-hosted, Proxmox-based, security-first.
 
-The agent runs as an unprivileged Linux user with deterministic enforcement (ingest, dispatcher, broker, egress) and model-backed orchestration (Qwen3-30B-A3B via llama.cpp on Tesla P40).
+A single command principal issues instructions. The agent runs as an unprivileged Linux user with deterministic enforcement (ingest, dispatcher, broker, egress) and model-backed orchestration (Qwen3-30B-A3B via llama.cpp on Tesla P40).
 
 ## Status
 

@@ -23,7 +23,7 @@ from seneschal.trace.logger import TraceLogger, get_trace_logger
 
 @dataclass
 class IngestAllowlists:
-    principal_id: str = "samson"
+    principal_id: str = "owner"
     email_senders: set[str] = field(default_factory=set)
     sms_numbers: set[str] = field(default_factory=set)
     voice_callers: set[str] = field(default_factory=set)
@@ -36,7 +36,7 @@ def load_allowlists(path: Path) -> IngestAllowlists:
         return IngestAllowlists()
     data = yaml.safe_load(path.read_text()) or {}
     return IngestAllowlists(
-        principal_id=data.get("principal_id", "samson"),
+        principal_id=data.get("principal_id", "owner"),
         email_senders=set(data.get("email_senders", [])),
         sms_numbers=set(data.get("sms_numbers", [])),
         voice_callers=set(data.get("voice_callers", [])),
