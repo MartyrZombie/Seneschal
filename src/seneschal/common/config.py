@@ -16,7 +16,7 @@ class HarnessSettings(BaseSettings):
     )
 
     agent_home: Path = Path("/home/agent")
-    principal_id: str = "samson"
+    principal_id: str = "owner"
     data_dir: Path = Path("./data")
 
     # Service sockets
